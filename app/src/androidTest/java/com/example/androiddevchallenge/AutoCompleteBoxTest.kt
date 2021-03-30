@@ -158,5 +158,4 @@ class AutoCompleteBoxTest {
         composeTestRule.onNodeWithTag(AutoCompleteSearchBarTag).performTextInput(textInput)
         composeTestRule.onNodeWithTag(AutoCompleteBoxTag).onChildren().assertCountEquals(expectedChildrenCount)
     }
-
 }
