@@ -36,7 +36,7 @@ import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.domain.models.Person
-import com.example.androiddevchallenge.presentation.components.TextSearchBar
+import com.example.androiddevchallenge.presentation.components.searchbar.TextSearchBar
 import com.example.androiddevchallenge.presentation.components.autocomplete.AutoCompleteBox
 
 const val AutoCompleteSearchBarTag = "AutoCompleteSearchBar"
