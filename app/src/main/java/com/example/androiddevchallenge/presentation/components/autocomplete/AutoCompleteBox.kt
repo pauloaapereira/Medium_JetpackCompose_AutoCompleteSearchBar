@@ -32,8 +32,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
-import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.semantics.testTag
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 
 const val AutoCompleteBoxTag = "AutoCompleteBox"
@@ -76,9 +75,7 @@ private fun Modifier.autoComplete(
         heightIn(0.dp, autoCompleteItemScope.boxMaxHeight)
 
     baseModifier
-        .semantics {
-            testTag = AutoCompleteBoxTag
-        }
+        .testTag(AutoCompleteBoxTag)
         .fillMaxWidth(autoCompleteItemScope.boxWidthPercentage)
         .border(
             border = autoCompleteItemScope.boxBorderStroke,
