@@ -13,13 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.androiddevchallenge
+package com.example.androiddevchallenge.domain.models
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
-class ExampleUnitTest {
-    // Add unit tests here
+import com.example.androiddevchallenge.presentation.components.autocomplete.AutoCompleteEntity
+import java.util.Locale
+
+data class Person(
+    val name: String,
+    val age: Int
+) : AutoCompleteEntity {
+    override fun filter(query: String): Boolean {
+        return name.toLowerCase(Locale.getDefault())
+            .startsWith(query.toLowerCase(Locale.getDefault()))
+    }
 }
