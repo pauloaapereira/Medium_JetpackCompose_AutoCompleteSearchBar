@@ -11,7 +11,7 @@ Check the article below, if you want to learn how to get a full customizable aut
 
 And… We will be using the most recent Android UI Toolkit, Jetpack Compose. :]
 
-medium
+https://pauloaapereira.medium.com/jetpack-compose-auto-complete-search-bar-853023856f0f
 
 ## Donation 💰
 If this project help you reduce time to develop, you can pay me a cup of coffee. :]
