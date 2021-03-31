@@ -1,8 +1,15 @@
 # Jetpack Compose - TextField AutoComplete
 
 ## Description
-Since the Android team released Jetpack Compose first beta version, I’ve been trying my best to keep in sync with all the updates, by following the Android Dev Challenges and also by trying to reproduce my projects with it.
-So, I have decided to publish an article on Medium about how to implement a TextField AutoComplete with Jetpack Compose.
+Nowadays, Android apps have more and more features, and also, more and more data to show to the user. Even with the best User Experience (UX), with so many data, it may become hard for users to find what they are looking for.
+
+One common way to make this is easier, is to use a search bar! And what is even better than a search bar -  you ask?  - 
+
+A search bar with an auto complete!
+
+Check the article below, if you want to learn how to get a full customizable auto complete functionality to your search bar.
+
+And… We will be using the most recent Android UI Toolkit, Jetpack Compose. :]
 
 medium
 
