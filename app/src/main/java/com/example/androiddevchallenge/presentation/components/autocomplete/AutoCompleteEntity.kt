@@ -21,3 +21,8 @@ import androidx.compose.runtime.Stable
 interface AutoCompleteEntity {
     fun filter(query: String): Boolean
 }
+
+@Stable
+interface ValueAutoCompleteEntity<T> : AutoCompleteEntity {
+    val value: T
+}

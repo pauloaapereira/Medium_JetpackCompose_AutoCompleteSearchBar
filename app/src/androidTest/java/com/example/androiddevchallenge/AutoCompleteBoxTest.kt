@@ -28,8 +28,8 @@ import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.domain.models.Person
 import com.example.androiddevchallenge.presentation.MainActivity
 import com.example.androiddevchallenge.presentation.components.autocomplete.AutoCompleteBoxTag
-import com.example.androiddevchallenge.presentation.sample.AutoCompleteSample
-import com.example.androiddevchallenge.presentation.sample.AutoCompleteSearchBarTag
+import com.example.androiddevchallenge.presentation.components.autocomplete.utils.AutoCompleteSearchBarTag
+import com.example.androiddevchallenge.presentation.sample.AutoCompleteObjectSample
 import com.example.androiddevchallenge.presentation.theme.MyTheme
 import org.junit.Rule
 import org.junit.Test
@@ -39,16 +39,15 @@ class AutoCompleteBoxTest {
     @get:Rule
     val composeTestRule = createAndroidComposeRule<MainActivity>()
 
-    @ExperimentalAnimationApi
+    @OptIn(ExperimentalAnimationApi::class)
     private fun launchAutoCompleteWith(persons: List<Person>) {
         composeTestRule.setContent {
             MyTheme {
-                AutoCompleteSample(persons = persons)
+                AutoCompleteObjectSample(persons = persons)
             }
         }
     }
 
-    @ExperimentalAnimationApi
     @Test
     fun auto_complete_box_not_visible_without_items() {
         // Given
@@ -62,7 +61,6 @@ class AutoCompleteBoxTest {
         composeTestRule.onNodeWithTag(AutoCompleteBoxTag).assertHeightIsEqualTo(0.dp)
     }
 
-    @ExperimentalAnimationApi
     @Test
     fun auto_complete_box_visible_with_items() {
         // Given
@@ -81,7 +79,6 @@ class AutoCompleteBoxTest {
         composeTestRule.onNodeWithTag(AutoCompleteBoxTag).assertHeightIsAtLeast(1.dp)
     }
 
-    @ExperimentalAnimationApi
     @Test
     fun auto_complete_box_visible_with_one_item() {
         // Given
@@ -101,7 +98,6 @@ class AutoCompleteBoxTest {
         composeTestRule.onNodeWithTag(AutoCompleteBoxTag).onChildren().assertCountEquals(expectedChildrenCount)
     }
 
-    @ExperimentalAnimationApi
     @Test
     fun auto_complete_box_filter_has_one_result() {
         // Given
@@ -136,7 +132,6 @@ class AutoCompleteBoxTest {
         composeTestRule.onNodeWithTag(AutoCompleteBoxTag).onChildren().assertCountEquals(expectedChildrenCount)
     }
 
-    @ExperimentalAnimationApi
     @Test
     fun auto_complete_box_filter_empty_results() {
         // Given

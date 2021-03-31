@@ -17,9 +17,7 @@ package com.example.androiddevchallenge.presentation.sample
 
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
@@ -29,60 +27,54 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusState
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.domain.models.Person
-import com.example.androiddevchallenge.presentation.components.searchbar.TextSearchBar
 import com.example.androiddevchallenge.presentation.components.autocomplete.AutoCompleteBox
-
-const val AutoCompleteSearchBarTag = "AutoCompleteSearchBar"
+import com.example.androiddevchallenge.presentation.components.autocomplete.utils.AutoCompleteSearchBarTag
+import com.example.androiddevchallenge.presentation.components.searchbar.TextSearchBar
 
 @ExperimentalAnimationApi
 @Composable
-fun AutoCompleteSample(persons: List<Person>) {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        contentAlignment = Alignment.TopCenter
-    ) {
-        AutoCompleteBox(
-            items = persons,
-            itemContent = { person ->
-                PersonAutoCompleteItem(person)
-            }
-        ) {
-            var value by remember { mutableStateOf("") }
-            val view = LocalView.current
-
-            onItemSelected { person ->
-                value = person.name
-                view.clearFocus()
-            }
-
-            TextSearchBar(
-                modifier = Modifier.testTag(AutoCompleteSearchBarTag),
-                value = value,
-                label = "Search",
-                onDoneActionClick = {
-                    view.clearFocus()
-                },
-                onFocusChanged = { focusState ->
-                    isSearching = focusState == FocusState.Active
-                },
-                onValueChange = { query ->
-                    if (value.isBlank() && query.isBlank())
-                        view.clearFocus()
-
-                    value = query
-                    filter(value)
-                }
-            )
+fun AutoCompleteObjectSample(persons: List<Person>) {
+    AutoCompleteBox(
+        items = persons,
+        itemContent = { person ->
+            PersonAutoCompleteItem(person)
         }
+    ) {
+        var value by remember { mutableStateOf("") }
+        val view = LocalView.current
+
+        onItemSelected { person ->
+            value = person.name
+            filter(value)
+            view.clearFocus()
+        }
+
+        TextSearchBar(
+            modifier = Modifier.testTag(AutoCompleteSearchBarTag),
+            value = value,
+            label = "Search with objects",
+            onDoneActionClick = {
+                view.clearFocus()
+            },
+            onClearClick = {
+                value = ""
+                filter(value)
+                view.clearFocus()
+            },
+            onFocusChanged = { focusState ->
+                isSearching = focusState == FocusState.Active
+            },
+            onValueChanged = { query ->
+                value = query
+                filter(value)
+            }
+        )
     }
 }
 

@@ -19,8 +19,19 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.domain.models.Person
-import com.example.androiddevchallenge.presentation.sample.AutoCompleteSample
+import com.example.androiddevchallenge.presentation.sample.AutoCompleteObjectSample
+import com.example.androiddevchallenge.presentation.sample.AutoCompleteValueSample
 import com.example.androiddevchallenge.presentation.theme.MyTheme
 
 class MainActivity : AppCompatActivity() {
@@ -48,7 +59,16 @@ class MainActivity : AppCompatActivity() {
                         age = 20
                     ),
                 )
-                AutoCompleteSample(persons = persons)
+                val names = persons.map { it.name }
+
+                Column(
+                    modifier = Modifier.fillMaxSize().padding(16.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(24.dp)
+                ) {
+                    AutoCompleteObjectSample(persons = persons)
+                    AutoCompleteValueSample(items = names)
+                }
             }
         }
     }

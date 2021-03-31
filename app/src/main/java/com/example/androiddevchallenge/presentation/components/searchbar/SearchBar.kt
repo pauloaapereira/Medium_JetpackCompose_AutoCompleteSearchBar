@@ -37,9 +37,10 @@ fun TextSearchBar(
     modifier: Modifier = Modifier,
     value: String,
     label: String,
-    onFocusChanged: (FocusState) -> Unit = {},
     onDoneActionClick: () -> Unit = {},
-    onValueChange: (String) -> Unit
+    onClearClick: () -> Unit = {},
+    onFocusChanged: (FocusState) -> Unit = {},
+    onValueChanged: (String) -> Unit
 ) {
     OutlinedTextField(
         modifier = modifier
@@ -47,13 +48,13 @@ fun TextSearchBar(
             .onFocusChanged { onFocusChanged(it) },
         value = value,
         onValueChange = { query ->
-            onValueChange(query)
+            onValueChanged(query)
         },
         label = { Text(text = label) },
         textStyle = MaterialTheme.typography.subtitle1,
         singleLine = true,
         trailingIcon = {
-            IconButton(onClick = { onValueChange("") }) {
+            IconButton(onClick = { onClearClick() }) {
                 Icon(imageVector = Icons.Filled.Clear, contentDescription = "Clear")
             }
         },
